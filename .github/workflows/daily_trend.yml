@@ -1,0 +1,31 @@
+name: Daily 5 Languages Trend
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Python 설정
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: 패키지 설치
+        run: pip install -r requirements.txt
+
+      - name: 봇 실행
+        # 여기에 5개의 시크릿을 모두 매핑합니다
+        env:
+          WEBHOOK_PYTHON: ${{ secrets.WEBHOOK_PYTHON }}
+          WEBHOOK_JAVASCRIPT: ${{ secrets.WEBHOOK_JAVASCRIPT }}
+          WEBHOOK_TYPESCRIPT: ${{ secrets.WEBHOOK_TYPESCRIPT }}
+          WEBHOOK_JAVA: ${{ secrets.WEBHOOK_JAVA }}
+          WEBHOOK_KOTLIN: ${{ secrets.WEBHOOK_KOTLIN }}
+        run: python src/main.py
