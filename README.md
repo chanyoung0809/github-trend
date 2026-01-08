@@ -16,7 +16,7 @@
 * **Language:** Python 3.9
 * **Libraries:** `requests`, `beautifulsoup4`, `deep-translator`
 * **Infrastructure:** GitHub Actions (Cron Job)
-* **Notification:** Discord Webhook
+* **Notification:** Discord Webhook 
 
 ## 📂 프로젝트 구조 (Structure)
 
@@ -31,3 +31,4 @@ github-trend-bot/
 ├── .gitignore
 ├── README.md
 └── requirements.txt           # 의존성 패키지 목록
+
